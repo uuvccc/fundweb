@@ -247,7 +247,7 @@ def create_app(config_name):
         returnVolInfo["description"] = "processed"
         returnVolInfo["date"] = peter1.date
         if custno:
-            returnVolInfo["custno"] = custno
+            returnVolInfo["custno"] = actual_custno
 
         return jsonify(returnVolInfo)
 
@@ -346,7 +346,7 @@ def create_app(config_name):
         filtered_vol_info["description"] = "no processed"
         filtered_vol_info["date"] = peter1.date
         if custno:
-            filtered_vol_info["custno"] = custno
+            filtered_vol_info["custno"] = actual_custno
 
         return jsonify(filtered_vol_info)
 
