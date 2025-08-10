@@ -241,7 +241,7 @@ def create_app(config_name):
 
         returnVolInfo = {}
         for k, v in newVolInfo.items():
-            if v != 0.0:
+            if v != 0.0:  # 只包含份额变化不为0的基金
                 returnVolInfo[k] = v * navInfo[k]
 
         returnVolInfo["description"] = "processed"
@@ -264,6 +264,11 @@ def create_app(config_name):
         lastday = (datetime.now(tz) + timedelta(days=-1)).strftime('%Y%m%d')
         print("date: " + nowdate + " " + lastday)
 
+        # 初始化 max_id
+        max_id = db.session.query(func.max(JsonString.id)).scalar()
+        if not max_id:
+            return jsonify({"error": "暂无基金数据，请先运行数据获取任务"}), 404
+
         # Query data for specific custno if provided, otherwise get any latest data
         if custno:
             # Convert frontend custno to actual custno
@@ -278,11 +283,6 @@ def create_app(config_name):
             if not lastpeter1:
                 return jsonify({"error": f"客户 {custno} 无有效对比数据：找不到 {peter1.date} 之前的数据"}), 404
         else:
-            # 检查是否有数据
-            max_id = db.session.query(func.max(JsonString.id)).scalar()
-            if not max_id:
-                return jsonify({"error": "暂无基金数据，请先运行数据获取任务"}), 404
-
             peter1 = JsonString.query.filter_by(id=max_id).first()
             if not peter1:
                 return jsonify({"error": "无法获取最新基金数据"}), 404
@@ -338,12 +338,17 @@ def create_app(config_name):
             else:
                 newVolInfo[k] = volInfo[k] - lastVolInfo.get(k, 0)
 
-        newVolInfo["description"] = "no processed"
-        newVolInfo["date"] = peter1.date
-        if custno:
-            newVolInfo["custno"] = custno
+        filtered_vol_info = {}
+        for k, v in newVolInfo.items():
+            if isinstance(v, (int, float)) and v != 0.0:  # 只包含份额变化不为0的基金
+                filtered_vol_info[k] = v
 
-        return jsonify(newVolInfo)
+        filtered_vol_info["description"] = "no processed"
+        filtered_vol_info["date"] = peter1.date
+        if custno:
+            filtered_vol_info["custno"] = custno
+
+        return jsonify(filtered_vol_info)
 
     # 获取指定日期的基金数据
     @app.route('/api/funds/by-date', methods=['GET', 'POST'])
@@ -427,11 +432,12 @@ def create_app(config_name):
 
         amoutInfo = {}
         for k, v in newVolInfo.items():
-            amoutInfo[k] = v * navInfo[k]
+            if v != 0.0:  # 只包含份额变化不为0的基金
+                amoutInfo[k] = v * navInfo[k]
 
         amoutInfo["description"] = "arbitrarily / no processed amount : vol"
         amoutInfo["date"] = peter1.date
-        amoutInfo["amountInfo"] = str(newVolInfo)
+        amoutInfo["amountInfo"] = {k: v for k, v in newVolInfo.items() if v != 0.0}  # 过滤amountInfo中的0值
 
         return jsonify(amoutInfo)
 
