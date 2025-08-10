@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>净值与份额变化</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: #f5f5f5;
+        }
+        
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+            text-align: center;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #333;
+        }
+        
+        select, button, input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+        
+        select, input {
+            background-color: white;
+        }
+        
+        button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        button:hover {
+            background-color: #0056b3;
+        }
+        
+        .button-group {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+        }
+        
+        .button-group button {
+            flex: 1;
+            margin-bottom: 0;
+        }
+        
+        pre {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 6px;
+            border: 1px solid #e9ecef;
+            overflow-x: auto;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            font-size: 14px;
+            line-height: 1.4;
+            margin-top: 15px;
+        }
+        
+        /* 移动端适配 */
+        @media (max-width: 768px) {
+            body {
+                padding: 15px;
+            }
+            
+            h1 {
+                font-size: 1.5rem;
+                margin-bottom: 15px;
+            }
+            
+            select, button, input {
+                padding: 14px;
+                font-size: 16px; /* 防止iOS缩放 */
+            }
+            
+            .button-group {
+                flex-direction: column;
+            }
+            
+            pre {
+                font-size: 12px;
+                padding: 12px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            body {
+                padding: 10px;
+            }
+            
+            h1 {
+                font-size: 1.3rem;
+            }
+            
+            pre {
+                font-size: 11px;
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>净值与份额变化（合并页面）</h1>
+    
+    <div class="form-group">
+        <label for="custno_combined">选择客户号（custno）：</label>
+        <select id="custno_combined">
+            <option value="custno1">Customer 1</option>
+            <option value="custno2">Customer 2</option>
+        </select>
+    </div>
+    
+    <div class="button-group">
+        <button onclick="fetchCombinedChanges()">查询</button>
+        <button onclick="window.location.href='/'">返回首页</button>
+    </div>
+    
+    <pre id="combined_result"></pre>
+    
+    <script>
+        function fetchCombinedChanges() {
+            const custno = document.getElementById('custno_combined').value;
+            // Now both APIs support the custno parameter
+            Promise.all([
+                fetch(`/api/funds/nav-changes?custno=${encodeURIComponent(custno)}`).then(r => r.json()),
+                fetch(`/api/funds/volume-changes?custno=${encodeURIComponent(custno)}`).then(r => r.json())
+            ]).then(([nav, volume]) => {
+                document.getElementById('combined_result').textContent =
+                    '【净值变化】\n' + JSON.stringify(nav, null, 2) +
+                    '\n\n【份额变化】\n' + JSON.stringify(volume, null, 2);
+            }).catch(error => {
+                document.getElementById('combined_result').textContent = 'Error: ' + error;
+            });
+        }
+        window.onload = fetchCombinedChanges;
+    </script>
+</body>
+</html>

@@ -1,0 +1,1012 @@
+Waiting for MySQL...
+MySQL started
+/usr/lib/python2.7/site-packages/flask_sqlalchemy/__init__.py:794: FSADeprecationWarning: SQLALCHEMY_TRACK_MODIFICATIONS adds significant overhead and will be disabled by default in the future.  Set it to True or False to suppress this warning.
+  'SQLALCHEMY_TRACK_MODIFICATIONS adds significant overhead and '
+No handlers could be found for logger "root"
+/usr/lib/python2.7/site-packages/flask_sqlalchemy/__init__.py:794: FSADeprecationWarning: SQLALCHEMY_TRACK_MODIFICATIONS adds significant overhead and will be disabled by default in the future.  Set it to True or False to suppress this warning.
+  'SQLALCHEMY_TRACK_MODIFICATIONS adds significant overhead and '
+INFO  [alembic.runtime.migration] Context impl MySQLImpl.
+INFO  [alembic.runtime.migration] Will assume non-transactional DDL.
+INFO  [alembic.env] No changes in schema detected.
+/usr/lib/python2.7/site-packages/flask_sqlalchemy/__init__.py:794: FSADeprecationWarning: SQLALCHEMY_TRACK_MODIFICATIONS adds significant overhead and will be disabled by default in the future.  Set it to True or False to suppress this warning.
+  'SQLALCHEMY_TRACK_MODIFICATIONS adds significant overhead and '
+INFO  [alembic.runtime.migration] Context impl MySQLImpl.
+INFO  [alembic.runtime.migration] Will assume non-transactional DDL.
+/usr/lib/python2.7/site-packages/flask_sqlalchemy/__init__.py:794: FSADeprecationWarning: SQLALCHEMY_TRACK_MODIFICATIONS adds significant overhead and will be disabled by default in the future.  Set it to True or False to suppress this warning.
+  'SQLALCHEMY_TRACK_MODIFICATIONS adds significant overhead and '
+ * Serving Flask app "app" (lazy loading)
+ * Environment: production
+   WARNING: Do not use the development server in a production environment.
+   Use a production WSGI server instead.
+ * Debug mode: on
+ * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+ * Restarting with stat
+/usr/lib/python2.7/site-packages/flask_sqlalchemy/__init__.py:794: FSADeprecationWarning: SQLALCHEMY_TRACK_MODIFICATIONS adds significant overhead and will be disabled by default in the future.  Set it to True or False to suppress this warning.
+  'SQLALCHEMY_TRACK_MODIFICATIONS adds significant overhead and '
+ * Debugger is active!
+ * Debugger PIN: 157-667-768
+183.202.4.27 - - [23/Jul/2021 10:52:20] "GET /login HTTP/1.1" 200 -
+183.202.4.27 - - [23/Jul/2021 10:53:43] "GET /login HTTP/1.1" 200 -
+183.202.4.27 - - [23/Jul/2021 10:56:27] "GET /login HTTP/1.1" 200 -
+183.202.4.27 - - [23/Jul/2021 11:35:33] "GET / HTTP/1.1" 200 -
+183.202.4.27 - - [23/Jul/2021 11:35:35] "GET /favicon.ico HTTP/1.1" 404 -
+183.202.4.27 - - [23/Jul/2021 11:35:42] "GET / HTTP/1.1" 200 -
+183.202.4.27 - - [23/Jul/2021 11:35:47] "GET /login HTTP/1.1" 200 -
+183.202.4.27 - - [23/Jul/2021 11:35:48] "GET /favicon.ico HTTP/1.1" 404 -
+183.202.4.27 - - [23/Jul/2021 22:10:25] "GET / HTTP/1.1" 200 -
+183.202.4.27 - - [23/Jul/2021 22:10:28] "GET /login HTTP/1.1" 200 -
+183.202.4.27 - - [24/Jul/2021 02:46:20] "GET / HTTP/1.1" 200 -
+183.202.4.27 - - [24/Jul/2021 02:46:21] "GET /login HTTP/1.1" 500 -
+Traceback (most recent call last):
+  File "/usr/lib/python2.7/site-packages/flask/app.py", line 2309, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/usr/lib/python2.7/site-packages/flask/app.py", line 2295, in wsgi_app
+    response = self.handle_exception(e)
+  File "/usr/lib/python2.7/site-packages/flask/app.py", line 1741, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/lib/python2.7/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/lib/python2.7/site-packages/flask/app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/lib/python2.7/site-packages/flask/app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/lib/python2.7/site-packages/flask/app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/lib/python2.7/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/root/fundweb/app/__init__.py", line 66, in get_json
+    jsonObject = json.loads(peter.jsonString)
+AttributeError: 'NoneType' object has no attribute 'jsonString'
+183.202.4.27 - - [24/Jul/2021 02:46:23] "GET /login?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+183.202.4.27 - - [24/Jul/2021 02:46:23] "GET /login?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+183.202.4.27 - - [24/Jul/2021 02:46:23] "GET /login?__debugger__=yes&cmd=resource&f=jquery.js HTTP/1.1" 200 -
+183.202.4.27 - - [24/Jul/2021 02:46:24] "GET /login?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+183.202.4.27 - - [24/Jul/2021 02:46:24] "GET /login?__debugger__=yes&cmd=resource&f=ubuntu.ttf HTTP/1.1" 200 -
+183.202.4.27 - - [24/Jul/2021 02:46:25] "GET /login?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+ * Detected change in '/root/fundweb/app/__init__.py', reloading
+date: 20210722 20210721
+000689 : 99548.78
+110011 : 17.26
+001171 : 113174.18
+519674 : 14.94
+050022 : 62.82
+004895 : 24.56
+002296 : 47361.86
+004997 : 44.61
+001691 : 19.47
+000831 : 16450.55
+050026 : 51.67
+007835 : 13.0
+270050 : 20.0
+005911 : 121.13
+000452 : 19561.26
+date: 20210722 20210721
+000689 : 99548.78
+110011 : 17.26
+001171 : 113174.18
+519674 : 14.94
+050022 : 62.82
+004895 : 24.56
+002296 : 47361.86
+004997 : 44.61
+001691 : 19.47
+000831 : 16450.55
+050026 : 51.67
+007835 : 13.0
+270050 : 20.0
+005911 : 121.13
+000452 : 19561.26
+date: 20210722 20210721
+000689 : 95899.28
+110011 : 17.26
+001171 : 113174.18
+519674 : 14.94
+050022 : 62.82
+004895 : 24.56
+002296 : 42986.3
+004997 : 44.61
+001691 : 19.47
+000831 : 16000.0
+050026 : 51.67
+007835 : 13.0
+270050 : 20.0
+005911 : 121.13
+000452 : 20033.43
+date: 20210722 20210721
+000689 : 95899.28
+110011 : 17.26
+001171 : 113174.18
+519674 : 14.94
+050022 : 62.82
+004895 : 24.56
+002296 : 42986.3
+004997 : 44.61
+001691 : 19.47
+000831 : 16000.0
+050026 : 51.67
+007835 : 13.0
+270050 : 20.0
+005911 : 121.13
+000452 : 20033.43
+date: 20210722 20210721
+000689 : 95899.28
+110011 : 17.26
+001171 : 113174.18
+519674 : 14.94
+050022 : 62.82
+004895 : 24.56
+002296 : 42986.3
+004997 : 44.61
+001691 : 19.47
+000831 : 16000.0
+050026 : 51.67
+007835 : 13.0
+270050 : 20.0
+005911 : 121.13
+000452 : 20033.43
+date: 20210723 20210722
+ * Restarting with stat
+Traceback (most recent call last):
+  File "run.py", line 4, in <module>
+    from app import create_app
+  File "/root/fundweb/app/__init__.py", line 12, in <module>
+    from sqlalchemy import account,max,min,avg, func
+ImportError: cannot import name account
+Waiting for MySQL...
+MySQL started
+/usr/lib/python2.7/site-packages/flask_sqlalchemy/__init__.py:794: FSADeprecationWarning: SQLALCHEMY_TRACK_MODIFICATIONS adds significant overhead and will be disabled by default in the future.  Set it to True or False to suppress this warning.
+  'SQLALCHEMY_TRACK_MODIFICATIONS adds significant overhead and '
+No handlers could be found for logger "root"
+/usr/lib/python2.7/site-packages/flask_sqlalchemy/__init__.py:794: FSADeprecationWarning: SQLALCHEMY_TRACK_MODIFICATIONS adds significant overhead and will be disabled by default in the future.  Set it to True or False to suppress this warning.
+  'SQLALCHEMY_TRACK_MODIFICATIONS adds significant overhead and '
+INFO  [alembic.runtime.migration] Context impl MySQLImpl.
+INFO  [alembic.runtime.migration] Will assume non-transactional DDL.
+INFO  [alembic.env] No changes in schema detected.
+/usr/lib/python2.7/site-packages/flask_sqlalchemy/__init__.py:794: FSADeprecationWarning: SQLALCHEMY_TRACK_MODIFICATIONS adds significant overhead and will be disabled by default in the future.  Set it to True or False to suppress this warning.
+  'SQLALCHEMY_TRACK_MODIFICATIONS adds significant overhead and '
+INFO  [alembic.runtime.migration] Context impl MySQLImpl.
+INFO  [alembic.runtime.migration] Will assume non-transactional DDL.
+/usr/lib/python2.7/site-packages/flask_sqlalchemy/__init__.py:794: FSADeprecationWarning: SQLALCHEMY_TRACK_MODIFICATIONS adds significant overhead and will be disabled by default in the future.  Set it to True or False to suppress this warning.
+  'SQLALCHEMY_TRACK_MODIFICATIONS adds significant overhead and '
+ * Serving Flask app "app" (lazy loading)
+ * Environment: production
+   WARNING: Do not use the development server in a production environment.
+   Use a production WSGI server instead.
+ * Debug mode: on
+ * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+ * Restarting with stat
+/usr/lib/python2.7/site-packages/flask_sqlalchemy/__init__.py:794: FSADeprecationWarning: SQLALCHEMY_TRACK_MODIFICATIONS adds significant overhead and will be disabled by default in the future.  Set it to True or False to suppress this warning.
+  'SQLALCHEMY_TRACK_MODIFICATIONS adds significant overhead and '
+ * Debugger is active!
+ * Debugger PIN: 157-667-768
+183.202.4.27 - - [24/Jul/2021 03:37:13] "GET /login HTTP/1.1" 200 -
+183.202.4.27 - - [24/Jul/2021 03:42:09] "GET /login HTTP/1.1" 200 -
+183.202.4.27 - - [24/Jul/2021 05:15:15] "GET / HTTP/1.1" 200 -
+183.202.4.27 - - [24/Jul/2021 05:15:19] "GET / HTTP/1.1" 200 -
+183.202.4.27 - - [24/Jul/2021 05:15:25] "GET / HTTP/1.1" 200 -
+183.202.4.27 - - [24/Jul/2021 05:15:31] "GET /login HTTP/1.1" 200 -
+183.202.4.27 - - [24/Jul/2021 07:31:45] "GET / HTTP/1.1" 200 -
+183.202.4.27 - - [24/Jul/2021 07:31:46] "GET /login HTTP/1.1" 200 -
+183.202.4.27 - - [24/Jul/2021 21:55:49] "GET / HTTP/1.1" 200 -
+183.202.4.27 - - [24/Jul/2021 21:55:50] "GET /login HTTP/1.1" 200 -
+183.202.4.27 - - [24/Jul/2021 22:47:47] "GET /login HTTP/1.1" 200 -
+183.202.4.27 - - [24/Jul/2021 22:47:48] "GET /apple-touch-icon-120x120-precomposed.png HTTP/1.1" 404 -
+183.202.4.27 - - [24/Jul/2021 22:47:48] "GET /apple-touch-icon-120x120.png HTTP/1.1" 404 -
+183.202.4.27 - - [24/Jul/2021 22:47:49] "GET /apple-touch-icon-precomposed.png HTTP/1.1" 404 -
+183.202.4.27 - - [24/Jul/2021 22:47:49] "GET /apple-touch-icon.png HTTP/1.1" 404 -
+183.202.4.27 - - [24/Jul/2021 22:47:50] "GET /favicon.ico HTTP/1.1" 404 -
+183.202.4.27 - - [24/Jul/2021 22:47:50] "GET /apple-touch-icon-120x120-precomposed.png HTTP/1.1" 404 -
+183.202.4.27 - - [24/Jul/2021 22:47:51] "GET /apple-touch-icon-120x120.png HTTP/1.1" 404 -
+183.202.4.27 - - [24/Jul/2021 22:47:51] "GET /apple-touch-icon-precomposed.png HTTP/1.1" 404 -
+183.202.4.27 - - [24/Jul/2021 22:47:52] "GET /apple-touch-icon.png HTTP/1.1" 404 -
+183.202.4.27 - - [24/Jul/2021 22:47:52] "GET /favicon.ico HTTP/1.1" 404 -
+Traceback (most recent call last):
+  File "/usr/lib64/python2.7/SocketServer.py", line 593, in process_request_thread
+    self.finish_request(request, client_address)
+  File "/usr/lib64/python2.7/SocketServer.py", line 334, in finish_request
+    self.RequestHandlerClass(request, client_address, self)
+  File "/usr/lib64/python2.7/SocketServer.py", line 649, in __init__
+    self.handle()
+  File "/usr/lib/python2.7/site-packages/werkzeug/serving.py", line 293, in handle
+    rv = BaseHTTPRequestHandler.handle(self)
+  File "/usr/lib64/python2.7/BaseHTTPServer.py", line 340, in handle
+    self.handle_one_request()
+  File "/usr/lib/python2.7/site-packages/werkzeug/serving.py", line 324, in handle_one_request
+    self.raw_requestline = self.rfile.readline()
+IOError: [Errno 104] Connection reset by peer
+81.71.11.144 - - [25/Jul/2021 00:53:26] "GET / HTTP/1.0" 200 -
+Traceback (most recent call last):
+  File "/usr/lib64/python2.7/SocketServer.py", line 593, in process_request_thread
+    self.finish_request(request, client_address)
+  File "/usr/lib64/python2.7/SocketServer.py", line 334, in finish_request
+    self.RequestHandlerClass(request, client_address, self)
+  File "/usr/lib64/python2.7/SocketServer.py", line 649, in __init__
+    self.handle()
+  File "/usr/lib/python2.7/site-packages/werkzeug/serving.py", line 293, in handle
+    rv = BaseHTTPRequestHandler.handle(self)
+  File "/usr/lib64/python2.7/BaseHTTPServer.py", line 340, in handle
+    self.handle_one_request()
+  File "/usr/lib/python2.7/site-packages/werkzeug/serving.py", line 324, in handle_one_request
+    self.raw_requestline = self.rfile.readline()
+IOError: [Errno 104] Connection reset by peer
+44.229.31.145 - - [25/Jul/2021 01:55:00] "GET / HTTP/1.1" 200 -
+183.202.4.99 - - [25/Jul/2021 02:45:21] "GET / HTTP/1.1" 200 -
+183.202.4.99 - - [25/Jul/2021 02:45:22] "GET /login HTTP/1.1" 200 -
+183.184.234.0 - - [25/Jul/2021 07:41:24] "GET / HTTP/1.1" 200 -
+183.184.234.0 - - [25/Jul/2021 07:41:25] "GET /favicon.ico HTTP/1.1" 404 -
+183.184.234.0 - - [25/Jul/2021 07:50:57] "GET /login HTTP/1.1" 200 -
+183.184.234.0 - - [25/Jul/2021 07:58:35] "GET / HTTP/1.1" 200 -
+183.184.234.0 - - [25/Jul/2021 07:58:36] "GET /favicon.ico HTTP/1.1" 404 -
+183.184.234.0 - - [25/Jul/2021 07:58:40] "GET /login HTTP/1.1" 200 -
+183.184.234.0 - - [25/Jul/2021 07:58:40] "GET /favicon.ico HTTP/1.1" 404 -
+39.103.146.5 - - [25/Jul/2021 17:08:11] code 400, message Bad request syntax ('00000000000000000000')
+39.103.146.5 - - [25/Jul/2021 17:08:11] "00000000000000000000" 400 -
+39.103.146.5 - - [25/Jul/2021 17:08:11] "GET / HTTP/1.0" 200 -
+39.103.146.5 - - [25/Jul/2021 17:08:11] "GET / HTTP/1.1" 200 -
+218.26.55.148 - - [25/Jul/2021 23:14:51] "GET / HTTP/1.1" 200 -
+218.26.55.148 - - [25/Jul/2021 23:14:52] "GET /login HTTP/1.1" 200 -
+218.26.55.148 - - [26/Jul/2021 02:49:00] "GET / HTTP/1.1" 200 -
+218.26.55.148 - - [26/Jul/2021 02:49:01] "GET /login HTTP/1.1" 200 -
+date: 20210723 20210722
+max id : SELECT max(jsonstring.id) AS max_1 
+FROM jsonstring
+000689 : 95899.28
+110011 : 17.26
+001171 : 113174.18
+519674 : 14.94
+050022 : 62.82
+004895 : 24.56
+002296 : 42986.3
+004997 : 44.61
+001691 : 19.47
+000831 : 16000.0
+050026 : 51.67
+007835 : 13.0
+270050 : 20.0
+005911 : 121.13
+000452 : 20033.43
+date: 20210723 20210722
+max id : SELECT max(jsonstring.id) AS max_1 
+FROM jsonstring
+000689 : 95899.28
+110011 : 17.26
+001171 : 113174.18
+519674 : 14.94
+050022 : 62.82
+004895 : 24.56
+002296 : 42986.3
+004997 : 44.61
+001691 : 19.47
+000831 : 16000.0
+050026 : 51.67
+007835 : 13.0
+270050 : 20.0
+005911 : 121.13
+000452 : 20033.43
+date: 20210723 20210722
+max id : SELECT max(jsonstring.id) AS max_1 
+FROM jsonstring
+000689 : 95899.28
+110011 : 17.26
+001171 : 113174.18
+519674 : 14.94
+050022 : 62.82
+004895 : 24.56
+002296 : 42986.3
+004997 : 44.61
+001691 : 19.47
+000831 : 16000.0
+050026 : 51.67
+007835 : 13.0
+270050 : 20.0
+005911 : 121.13
+000452 : 20033.43
+date: 20210723 20210722
+max id : SELECT max(jsonstring.id) AS max_1 
+FROM jsonstring
+000689 : 95899.28
+110011 : 17.26
+001171 : 113174.18
+519674 : 14.94
+050022 : 62.82
+004895 : 24.56
+002296 : 42986.3
+004997 : 44.61
+001691 : 19.47
+000831 : 16000.0
+050026 : 51.67
+007835 : 13.0
+270050 : 20.0
+005911 : 121.13
+000452 : 20033.43
+date: 20210723 20210722
+max id : SELECT max(jsonstring.id) AS max_1 
+FROM jsonstring
+000689 : 95899.28
+110011 : 17.26
+001171 : 113174.18
+519674 : 14.94
+050022 : 62.82
+004895 : 24.56
+002296 : 42986.3
+004997 : 44.61
+001691 : 19.47
+000831 : 16000.0
+050026 : 51.67
+007835 : 13.0
+270050 : 20.0
+005911 : 121.13
+000452 : 20033.43
+date: 20210723 20210722
+max id : SELECT max(jsonstring.id) AS max_1 
+FROM jsonstring
+000689 : 95899.28
+110011 : 17.26
+001171 : 113174.18
+519674 : 14.94
+050022 : 62.82
+004895 : 24.56
+002296 : 42986.3
+004997 : 44.61
+001691 : 19.47
+000831 : 16000.0
+050026 : 51.67
+007835 : 13.0
+270050 : 20.0
+005911 : 121.13
+000452 : 20033.43
+----------------------------------------
+Exception happened during processing of request from ('183.202.4.27', 28155)
+----------------------------------------
+----------------------------------------
+Exception happened during processing of request from ('81.71.11.144', 52337)
+----------------------------------------
+date: 20210724 20210723
+max id : SELECT max(jsonstring.id) AS max_1 
+FROM jsonstring
+000689 : 95899.28
+110011 : 17.26
+001171 : 113174.18
+519674 : 14.94
+050022 : 62.82
+004895 : 24.56
+002296 : 42986.3
+004997 : 44.61
+001691 : 19.47
+000831 : 16000.0
+050026 : 51.67
+007835 : 13.0
+270050 : 20.0
+005911 : 121.13
+000452 : 20033.43
+date: 20210724 20210723
+max id : SELECT max(jsonstring.id) AS max_1 
+FROM jsonstring
+000689 : 95899.28
+110011 : 17.26
+001171 : 113174.18
+519674 : 14.94
+050022 : 62.82
+004895 : 24.56
+002296 : 42986.3
+004997 : 44.61
+001691 : 19.47
+000831 : 16000.0
+050026 : 51.67
+007835 : 13.0
+270050 : 20.0
+005911 : 121.13
+000452 : 20033.43
+date: 20210724 20210723
+max id : SELECT max(jsonstring.id) AS max_1 
+FROM jsonstring
+000689 : 95899.28
+110011 : 17.26
+001171 : 113174.18
+519674 : 14.94
+050022 : 62.82
+004895 : 24.56
+002296 : 42986.3
+004997 : 44.61
+001691 : 19.47
+000831 : 16000.0
+050026 : 51.67
+007835 : 13.0
+270050 : 20.0
+005911 : 121.13
+000452 : 20033.43
+date: 20210724 20210723
+max id : SELECT max(jsonstring.id) AS max_1 
+FROM jsonstring
+000689 : 95899.28
+110011 : 17.26
+001171 : 113174.18
+519674 : 14.94
+050022 : 62.82
+004895 : 24.56
+002296 : 42986.3
+004997 : 44.61
+001691 : 19.47
+000831 : 16000.0
+050026 : 51.67
+007835 : 13.0
+270050 : 20.0
+005911 : 121.13
+000452 : 20033.43
+date: 20210725 20210724
+max id : SELECT max(jsonstring.id) AS max_1 
+FROM jsonstring
+000689 : 95899.28
+110011 : 17.26
+001171 : 113174.18
+519674 : 14.94
+050022 : 62.82
+004895 : 24.56
+002296 : 42986.3
+004997 : 44.61
+001691 : 19.47
+000831 : 16000.0
+050026 : 51.67
+007835 : 13.0
+270050 : 20.0
+005911 : 121.13
+000452 : 20033.43
+date: 20210725 20210724
+max id : SELECT max(jsonstring.id) AS max_1 
+FROM jsonstring
+000689 : 95899.28
+110011 : 17.26
+001171 : 113174.18
+519674 : 14.94
+050022 : 62.82
+004895 : 24.56
+002296 : 42986.3
+004997 : 44.61
+001691 : 19218.26.55.148 - - [26/Jul/2021 02:50:53] "GET /login HTTP/1.1" 200 -
+220.194.138.252 - - [26/Jul/2021 02:51:55] "GET / HTTP/1.1" 200 -
+220.194.138.252 - - [26/Jul/2021 02:51:56] "GET /favicon.ico HTTP/1.1" 404 -
+220.194.138.252 - - [26/Jul/2021 02:52:03] "GET /login HTTP/1.1" 200 -
+220.194.138.252 - - [26/Jul/2021 02:52:04] "GET /favicon.ico HTTP/1.1" 404 -
+220.194.138.252 - - [26/Jul/2021 02:52:05] "GET /favicon.ico HTTP/1.1" 404 -
+220.194.138.252 - - [26/Jul/2021 02:52:19] "GET /favicon.ico HTTP/1.1" 404 -
+220.194.138.252 - - [26/Jul/2021 02:52:20] "GET /favicon.ico HTTP/1.1" 404 -
+220.194.138.252 - - [26/Jul/2021 02:52:20] "GET /favicon.ico HTTP/1.1" 404 -
+220.194.138.252 - - [26/Jul/2021 02:52:21] "GET /record HTTP/1.1" 404 -
+220.194.138.252 - - [26/Jul/2021 02:52:21] "GET /favicon.ico HTTP/1.1" 404 -
+220.194.138.252 - - [26/Jul/2021 02:52:25] "GET /favicon.ico HTTP/1.1" 404 -
+220.194.138.252 - - [26/Jul/2021 02:52:25] "GET /favicon.ico HTTP/1.1" 404 -
+/usr/lib/python2.7/site-packages/sqlalchemy/engine/default.py:509: Warning: Incorrect string value: '\xE5\x8D\x97\xE6\x96\xB9...' for column 'jsonString' at row 1
+  cursor.execute(statement, parameters)
+220.194.138.252 - - [26/Jul/2021 02:52:31] "GET /recordone HTTP/1.1" 200 -
+220.194.138.252 - - [26/Jul/2021 02:52:31] "GET /favicon.ico HTTP/1.1" 404 -
+220.194.138.252 - - [26/Jul/2021 02:52:38] "GET /favicon.ico HTTP/1.1" 404 -
+220.194.138.252 - - [26/Jul/2021 02:52:38] "GET /favicon.ico HTTP/1.1" 404 -
+220.194.138.252 - - [26/Jul/2021 02:52:39] "GET /favicon.ico HTTP/1.1" 404 -
+220.194.138.252 - - [26/Jul/2021 02:52:39] "GET /login HTTP/1.1" 200 -
+220.194.138.252 - - [26/Jul/2021 02:52:40] "GET /favicon.ico HTTP/1.1" 404 -
+220.194.138.252 - - [26/Jul/2021 02:56:45] "GET /favicon.ico HTTP/1.1" 404 -
+220.194.138.252 - - [26/Jul/2021 02:56:46] "GET /favicon.ico HTTP/1.1" 404 -
+220.194.138.252 - - [26/Jul/2021 02:56:47] "GET /favicon.ico HTTP/1.1" 404 -
+220.194.138.252 - - [26/Jul/2021 02:56:47] "GET /favicon.ico HTTP/1.1" 404 -
+220.194.138.252 - - [26/Jul/2021 02:56:48] "GET /favicon.ico HTTP/1.1" 404 -
+220.194.138.252 - - [26/Jul/2021 02:56:48] "GET /favicon.ico HTTP/1.1" 404 -
+220.194.138.252 - - [26/Jul/2021 02:56:49] "GET /favicon.ico HTTP/1.1" 404 -
+220.194.138.252 - - [26/Jul/2021 02:56:50] "GET /favicon.ico HTTP/1.1" 404 -
+220.194.138.252 - - [26/Jul/2021 02:56:50] "GET /favicon.ico HTTP/1.1" 404 -
+220.194.138.252 - - [26/Jul/2021 02:56:51] "GET /favicon.ico HTTP/1.1" 404 -
+220.194.138.252 - - [26/Jul/2021 02:56:53] "GET /favicon.ico HTTP/1.1" 404 -
+220.194.138.252 - - [26/Jul/2021 02:56:53] "GET /favicon.ico HTTP/1.1" 404 -
+220.194.138.252 - - [26/Jul/2021 02:56:54] "GET /favicon.ico HTTP/1.1" 404 -
+220.194.138.252 - - [26/Jul/2021 02:56:59] "GET /recordone HTTP/1.1" 200 -
+220.194.138.252 - - [26/Jul/2021 02:57:00] "GET /favicon.ico HTTP/1.1" 404 -
+220.194.138.252 - - [26/Jul/2021 02:57:03] "GET /login HTTP/1.1" 200 -
+Traceback (most recent call last):
+  File "/usr/lib64/python2.7/SocketServer.py", line 593, in process_request_thread
+    self.finish_request(request, client_address)
+  File "/usr/lib64/python2.7/SocketServer.py", line 334, in finish_request
+    self.RequestHandlerClass(request, client_address, self)
+  File "/usr/lib64/python2.7/SocketServer.py", line 649, in __init__
+    self.handle()
+  File "/usr/lib/python2.7/site-packages/werkzeug/serving.py", line 293, in handle
+    rv = BaseHTTPRequestHandler.handle(self)
+  File "/usr/lib64/python2.7/BaseHTTPServer.py", line 340, in handle
+    self.handle_one_request()
+  File "/usr/lib/python2.7/site-packages/werkzeug/serving.py", line 324, in handle_one_request
+    self.raw_requestline = self.rfile.readline()
+IOError: [Errno 104] Connection reset by peer
+180.163.220.66 - - [26/Jul/2021 03:17:33] "GET /recordone HTTP/1.1" 200 -
+180.163.220.4 - - [26/Jul/2021 03:17:49] "GET /recordone HTTP/1.1" 200 -
+42.236.10.106 - - [26/Jul/2021 03:18:35] "GET /record HTTP/1.1" 404 -
+42.236.10.84 - - [26/Jul/2021 03:18:39] "GET /record HTTP/1.1" 404 -
+180.163.220.4 - - [26/Jul/2021 03:19:08] "GET /login HTTP/1.1" 200 -
+180.163.220.3 - - [26/Jul/2021 03:19:08] "GET /login HTTP/1.1" 200 -
+218.26.55.148 - - [26/Jul/2021 03:28:44] "GET /login HTTP/1.1" 200 -
+180.163.220.5 - - [26/Jul/2021 03:34:36] "GET / HTTP/1.1" 200 -
+180.163.220.3 - - [26/Jul/2021 03:35:10] "GET / HTTP/1.1" 200 -
+42.236.10.114 - - [26/Jul/2021 03:35:29] "GET / HTTP/1.1" 200 -
+42.236.10.114 - - [26/Jul/2021 03:35:30] "GET / HTTP/1.1" 200 -
+180.163.220.3 - - [26/Jul/2021 05:42:17] "GET /recordone HTTP/1.1" 200 -
+42.236.10.78 - - [26/Jul/2021 05:42:31] "GET / HTTP/1.1" 200 -
+180.163.220.67 - - [26/Jul/2021 05:42:51] "GET /login HTTP/1.1" 200 -
+180.163.220.68 - - [26/Jul/2021 05:42:52] "GET /login HTTP/1.1" 200 -
+180.163.220.66 - - [26/Jul/2021 05:46:19] "GET /record HTTP/1.1" 404 -
+180.163.220.4 - - [26/Jul/2021 05:46:37] "GET /record HTTP/1.1" 404 -
+180.163.220.68 - - [26/Jul/2021 05:46:41] "GET /record HTTP/1.1" 404 -
+42.193.23.126 - - [26/Jul/2021 06:47:56] "GET /recordone HTTP/1.1" 200 -
+178.62.255.237 - - [26/Jul/2021 07:02:27] "GET / HTTP/1.0" 200 -
+222.186.19.235 - - [26/Jul/2021 08:48:28] code 400, message Bad request syntax ('\x16\x03\x01\x00\xee\x01\x00\x00\xea\x03\x03\r\xb8%\xba\xd9&A\xe4\xa0g=2\xd2\x05\xc5\x82\xff\xdd\xb6C_\x07\xee\x1fn\xb5\x942,\x96\xdbb \xd7\x80\x18\x92\xb3&\xf0\xe3\x9e\x1a\x02\xa7pXn\xf5m\x1b\x07\xbb\x91\x88\x8cC{?\x88\x0c\x1c\x9a\x07c\x00&\xcc\xa8\xcc\xa9\xc0/\xc00\xc0+\xc0,\xc0\x13\xc0\t\xc0\x14\xc0')
+222.186.19.235 - - [26/Jul/2021 08:48:28] " î  ê¸%ºÙ&Aä g=2ÒÅ‚ÿÝ¶C_înµ”2,–Ûb ×€’³&ðãž§pXnõm»‘ˆŒC{?ˆšc &Ì¨Ì©À/À0À+À,ÀÀ	ÀÀ" 400 -
+222.186.19.235 - - [26/Jul/2021 08:48:28] "GET http://fuwu.sogou.com/404/index.html HTTP/1.1" 404 -
+222.186.19.235 - - [26/Jul/2021 08:48:35] code 400, message Bad request syntax ('\x05\x01\x00')
+222.186.19.235 - - [26/Jul/2021 08:48:35] " " 400 -
+Traceback (most recent call last):
+  File "/usr/lib64/python2.7/SocketServer.py", line 593, in process_request_thread
+    self.finish_request(request, client_address)
+  File "/usr/lib64/python2.7/SocketServer.py", line 334, in finish_request
+    self.RequestHandlerClass(request, client_address, self)
+  File "/usr/lib64/python2.7/SocketServer.py", line 649, in __init__
+    self.handle()
+  File "/usr/lib/python2.7/site-packages/werkzeug/serving.py", line 293, in handle
+    rv = BaseHTTPRequestHandler.handle(self)
+  File "/usr/lib64/python2.7/BaseHTTPServer.py", line 340, in handle
+    self.handle_one_request()
+  File "/usr/lib/python2.7/site-packages/werkzeug/serving.py", line 327, in handle_one_request
+    elif self.parse_request():
+  File "/usr/lib64/python2.7/BaseHTTPServer.py", line 286, in parse_request
+    self.send_error(400, "Bad request syntax (%r)" % requestline)
+  File "/usr/lib64/python2.7/BaseHTTPServer.py", line 373, in send_error
+    self.wfile.write(content)
+IOError: [Errno 32] Broken pipe
+82.146.54.153 - - [26/Jul/2021 17:01:53] "GET / HTTP/1.0" 200 -
+218.26.55.148 - - [26/Jul/2021 20:29:31] "GET / HTTP/1.1" 200 -
+218.26.55.148 - - [26/Jul/2021 20:29:31] "GET /login HTTP/1.1" 200 -
+218.26.55.148 - - [27/Jul/2021 02:49:43] "GET /login HTTP/1.1" 200 -
+220.194.138.252 - - [27/Jul/2021 02:50:13] "GET /login HTTP/1.1" 200 -
+220.194.138.252 - - [27/Jul/2021 02:50:14] "GET /favicon.ico HTTP/1.1" 404 -
+220.194.138.252 - - [27/Jul/2021 02:50:15] "GET /favicon.ico HTTP/1.1" 404 -
+220.194.138.252 - - [27/Jul/2021 02:50:20] "GET /favicon.ico HTTP/1.1" 404 -
+220.194.138.252 - - [27/Jul/2021 02:50:21] "GET /favicon.ico HTTP/1.1" 404 -
+220.194.138.252 - - [27/Jul/2021 02:50:22] "GET /favicon.ico HTTP/1.1" 404 -
+220.194.138.252 - - [27/Jul/2021 02:50:23] "GET /favicon.ico HTTP/1.1" 404 -
+220.194.138.252 - - [27/Jul/2021 02:50:28] "GET /recordone HTTP/1.1" 200 -
+.47
+000831 : 16000.0
+050026 : 51.67
+007835 : 13.0
+270050 : 20.0
+005911 : 121.13
+000452 : 20033.43
+date: 20210725 20210724
+max id : SELECT max(jsonstring.id) AS max_1 
+FROM jsonstring
+000689 : 95899.28
+110011 : 17.26
+001171 : 113174.18
+519674 : 14.94
+050022 : 62.82
+004895 : 24.56
+002296 : 42986.3
+004997 : 44.61
+001691 : 19.47
+000831 : 16000.0
+050026 : 51.67
+007835 : 13.0
+270050 : 20.0
+005911 : 121.13
+000452 : 20033.43
+date: 20210725 20210724
+max id : SELECT max(jsonstring.id) AS max_1 
+FROM jsonstring
+000689 : 104302.55
+110011 : 17.26
+001171 : 113174.18
+519674 : 14.94
+050022 : 62.82
+004895 : 24.56
+002296 : 55354.16
+004997 : 44.61
+001691 : 19.47
+000831 : 16450.55
+050026 : 51.67
+007835 : 13.0
+270050 : 20.0
+005911 : 121.13
+000452 : 19561.26
+date: 20210725 20210724
+max id : SELECT max(jsonstring.id) AS max_1 
+FROM jsonstring
+000689 : 104302.55
+110011 : 17.26
+001171 : 113174.18
+519674 : 14.94
+050022 : 62.82
+004895 : 24.56
+002296 : 55354.16
+004997 : 44.61
+001691 : 19.47
+000831 : 16450.55
+050026 : 51.67
+007835 : 13.0
+270050 : 20.0
+005911 : 121.13
+000452 : 19561.26
+----------------------------------------
+Exception happened during processing of request from ('220.194.138.252', 2158)
+----------------------------------------
+date: 20210725 20210724
+max id : SELECT max(jsonstring.id) AS max_1 
+FROM jsonstring
+000689 : 104302.55
+110011 : 17.26
+001171 : 113174.18
+519674 : 14.94
+050022 : 62.82
+004895 : 24.56
+002296 : 55354.16
+004997 : 44.61
+001691 : 19.47
+000831 : 16450.55
+050026 : 51.67
+007835 : 13.0
+270050 : 20.0
+005911 : 121.13
+000452 : 19561.26
+date: 20210725 20210724
+max id : SELECT max(jsonstring.id) AS max_1 
+FROM jsonstring
+000689 : 104302.55
+110011 : 17.26
+001171 : 113174.18
+519674 : 14.94
+050022 : 62.82
+004895 : 24.56
+002296 : 55354.16
+004997 : 44.61
+001691 : 19.47
+000831 : 16450.55
+050026 : 51.67
+007835 : 13.0
+270050 : 20.0
+005911 : 121.13
+000452 : 19561.26
+date: 20210725 20210724
+max id : SELECT max(jsonstring.id) AS max_1 
+FROM jsonstring
+000689 : 104302.55
+110011 : 17.26
+001171 : 113174.18
+519674 : 14.94
+050022 : 62.82
+004895 : 24.56
+002296 : 55354.16
+004997 : 44.61
+001691 : 19.47
+000831 : 16450.55
+050026 : 51.67
+007835 : 13.0
+270050 : 20.0
+005911 : 121.13
+000452 : 19561.26
+date: 20210725 20210724
+max id : SELECT max(jsonstring.id) AS max_1 
+FROM jsonstring
+000689 : 104302.55
+110011 : 17.26
+001171 : 113174.18
+519674 : 14.94
+050022 : 62.82
+004895 : 24.56
+002296 : 55354.16
+004997 : 44.61
+001691 : 19.47
+000831 : 16450.55
+050026 : 51.67
+007835 : 13.0
+270050 : 20.0
+005911 : 121.13
+000452 : 19561.26
+date: 20210725 20210724
+max id : SELECT max(jsonstring.id) AS max_1 
+FROM jsonstring
+000689 : 104302.55
+110011 : 17.26
+001171 : 113174.18
+519674 : 14.94
+050022 : 62.82
+004895 : 24.56
+002296 : 55354.16
+004997 : 44.61
+001691 : 19.47
+000831 : 16450.55
+050026 : 51.67
+007835 : 13.0
+270050 : 20.0
+005911 : 121.13
+000452 : 19561.26
+----------------------------------------
+Exception happened during processing of request from ('222.186.19.235', 57986)
+----------------------------------------
+date: 20210725 20210724
+max id : SELECT max(jsonstring.id) AS max_1 
+FROM jsonstring
+000689 : 104302.55
+110011 : 17.26
+001171 : 113174.18
+519674 : 14.94
+050022 : 62.82
+004895 : 24.56
+002296 : 55354.16
+004997 : 44.61
+001691 : 19.47
+000831 : 16450.55
+050026 : 51.67
+007835 : 13.0
+270050 : 20.0
+005911 : 121.13
+000452 : 19561.26
+date: 20210726 20210725
+max id : SELECT max(jsonstring.id) AS max_1 
+FROM jsonstring
+000689 : 104302.55
+110011 : 17.26
+001171 : 113174.18
+519674 : 14.94
+050022 : 62.82
+004895 : 24.56
+002296 : 55354.16
+004997 : 44.61
+001691 : 19.47
+000831 : 16450.55
+050026 : 51.67
+007835 : 13.0
+270050 : 20.0
+005911 : 121.13
+000452 : 19561.26
+date: 20210726 20210725
+max id : SELECT max(jsonstring.id) AS max_1 
+FROM jsonstring
+000689 : 104302.55
+110011 : 17.26
+001171 : 113174.18
+519674 : 14.94
+050022 : 62.82
+004895 : 24.56
+002296 : 55354.16
+004997 : 44.61
+001691 : 19.47
+000831 : 16450.55
+050026 : 51.67
+007835 : 13.0
+270050 : 20.0
+005911 : 121.13
+000452 : 19561.26
+date: 20210726 20210725
+max id : SELECT max(jsonstring.id) AS max_1 
+FROM jsonstring
+000689 :220.194.138.252 - - [27/Jul/2021 02:50:34] "GET /login HTTP/1.1" 200 -
+220.194.138.252 - - [27/Jul/2021 02:50:35] "GET /favicon.ico HTTP/1.1" 404 -
+220.194.138.252 - - [27/Jul/2021 02:54:09] "GET /favicon.ico HTTP/1.1" 404 -
+220.194.138.252 - - [27/Jul/2021 02:54:10] "GET /favicon.ico HTTP/1.1" 404 -
+220.194.138.252 - - [27/Jul/2021 02:54:11] "GET /favicon.ico HTTP/1.1" 404 -
+220.194.138.252 - - [27/Jul/2021 02:54:13] "GET /favicon.ico HTTP/1.1" 404 -
+220.194.138.252 - - [27/Jul/2021 02:54:14] "GET /favicon.ico HTTP/1.1" 404 -
+220.194.138.252 - - [27/Jul/2021 02:54:23] "GET /recordone HTTP/1.1" 200 -
+220.194.138.252 - - [27/Jul/2021 02:54:27] "GET /favicon.ico HTTP/1.1" 404 -
+220.194.138.252 - - [27/Jul/2021 02:54:27] "GET /login HTTP/1.1" 200 -
+220.194.138.252 - - [27/Jul/2021 02:54:32] "GET /favicon.ico HTTP/1.1" 404 -
+220.194.138.252 - - [27/Jul/2021 02:54:49] "GET /login HTTP/1.1" 200 -
+220.194.138.252 - - [27/Jul/2021 02:54:56] "GET /recordone HTTP/1.1" 200 -
+220.194.138.252 - - [27/Jul/2021 02:55:00] "GET /login HTTP/1.1" 200 -
+220.194.138.252 - - [27/Jul/2021 02:55:03] "GET /login HTTP/1.1" 200 -
+220.194.138.252 - - [27/Jul/2021 02:55:18] "GET /recordone HTTP/1.1" 200 -
+220.194.138.252 - - [27/Jul/2021 02:55:21] "GET /login HTTP/1.1" 200 -
+ * Detected change in '/root/fundweb/app/__init__.py', reloading
+ 104302.55
+110011 : 17.26
+001171 : 113174.18
+519674 : 14.94
+050022 : 62.82
+004895 : 24.56
+002296 : 55354.16
+004997 : 44.61
+001691 : 19.47
+000831 : 16450.55
+050026 : 51.67
+007835 : 13.0
+270050 : 20.0
+005911 : 121.13
+000452 : 19561.26
+date: 20210726 20210725
+max id : SELECT max(jsonstring.id) AS max_1 
+FROM jsonstring
+000689 : 104302.55
+110011 : 17.26
+001171 : 113174.18
+519674 : 14.94
+050022 : 62.82
+004895 : 24.56
+002296 : 55354.16
+004997 : 44.61
+001691 : 19.47
+000831 : 16450.55
+050026 : 51.67
+007835 : 13.0
+270050 : 20.0
+005911 : 121.13
+000452 : 20731.83
+date: 20210726 20210725
+max id : SELECT max(jsonstring.id) AS max_1 
+FROM jsonstring
+000689 : 104302.55
+110011 : 17.26
+001171 : 113174.18
+519674 : 14.94
+050022 : 62.82
+004895 : 24.56
+002296 : 55354.16
+004997 : 44.61
+001691 : 19.47
+000831 : 16450.55
+050026 : 51.67
+007835 : 13.0
+270050 : 20.0
+005911 : 121.13
+000452 : 20731.83
+date: 20210726 20210725
+max id : SELECT max(jsonstring.id) AS max_1 
+FROM jsonstring
+000689 : 104302.55
+110011 : 17.26
+001171 : 113174.18
+519674 : 14.94
+050022 : 62.82
+004895 : 24.56
+002296 : 55354.16
+004997 : 44.61
+001691 : 19.47
+000831 : 16450.55
+050026 : 51.67
+007835 : 13.0
+270050 : 20.0
+005911 : 121.13
+000452 : 20731.83
+date: 20210726 20210725
+max id : SELECT max(jsonstring.id) AS max_1 
+FROM jsonstring
+000689 : 104302.55
+110011 : 17.26
+001171 : 113174.18
+519674 : 14.94
+050022 : 62.82
+004895 : 24.56
+002296 : 55354.16
+004997 : 44.61
+001691 : 19.47
+000831 : 16450.55
+050026 : 51.67
+007835 : 13.0
+270050 : 20.0
+005911 : 121.13
+000452 : 20731.83
+date: 20210726 20210725
+max id : SELECT max(jsonstring.id) AS max_1 
+FROM jsonstring
+000689 : 104302.55
+110011 : 17.26
+001171 : 113174.18
+519674 : 14.94
+050022 : 62.82
+004895 : 24.56
+002296 : 55354.16
+004997 : 44.61
+001691 : 19.47
+000831 : 16450.55
+050026 : 51.67
+007835 : 13.0
+270050 : 20.0
+005911 : 121.13
+000452 : 20731.83
+ * Restarting with stat
+Traceback (most recent call last):
+  File "run.py", line 4, in <module>
+    from app import create_app
+  File "/root/fundweb/app/__init__.py", line 15, in <module>
+    from config import app_config
+  File "/root/fundweb/config.py", line 7
+SyntaxError: Non-ASCII character '\xe4' in file /root/fundweb/config.py on line 7, but no encoding declared; see http://www.python.org/peps/pep-0263.html for details
+Waiting for MySQL...
+MySQL started
+Traceback (most recent call last):
+  File "/usr/bin/flask", line 8, in <module>
+    sys.exit(main())
+  File "/usr/lib/python2.7/site-packages/flask/cli.py", line 894, in main
+    cli.main(args=args, prog_name=name)
+  File "/usr/lib/python2.7/site-packages/flask/cli.py", line 557, in main
+    return super(FlaskGroup, self).main(*args, **kwargs)
+  File "/usr/lib/python2.7/site-packages/click/core.py", line 717, in main
+    rv = self.invoke(ctx)
+  File "/usr/lib/python2.7/site-packages/click/core.py", line 1137, in invoke
+    return _process_result(sub_ctx.command.invoke(sub_ctx))
+  File "/usr/lib/python2.7/site-packages/click/core.py", line 1137, in invoke
+    return _process_result(sub_ctx.command.invoke(sub_ctx))
+  File "/usr/lib/python2.7/site-packages/click/core.py", line 956, in invoke
+    return ctx.invoke(self.callback, **ctx.params)
+  File "/usr/lib/python2.7/site-packages/click/core.py", line 555, in invoke
+    return callback(*args, **kwargs)
+  File "/usr/lib/python2.7/site-packages/click/decorators.py", line 17, in new_func
+    return f(get_current_context(), *args, **kwargs)
+  File "/usr/lib/python2.7/site-packages/flask/cli.py", line 411, in decorator
+    with __ctx.ensure_object(ScriptInfo).load_app().app_context():
+  File "/usr/lib/python2.7/site-packages/flask/cli.py", line 377, in load_app
+    raise_if_not_found=False)
+  File "/usr/lib/python2.7/site-packages/flask/cli.py", line 235, in locate_app
+    __import__(module_name)
+  File "/root/fundweb/app/__init__.py", line 15, in <module>
+    from config import app_config
+  File "/root/fundweb/config.py", line 7
+SyntaxError: Non-ASCII character '\xe4' in file /root/fundweb/config.py on line 7, but no encoding declared; see http://www.python.org/peps/pep-0263.html for details
+Traceback (most recent call last):
+  File "/usr/bin/flask", line 8, in <module>
+    sys.exit(main())
+  File "/usr/lib/python2.7/site-packages/flask/cli.py", line 894, in main
+    cli.main(args=args, prog_name=name)
+  File "/usr/lib/python2.7/site-packages/flask/cli.py", line 557, in main
+    return super(FlaskGroup, self).main(*args, **kwargs)
+  File "/usr/lib/python2.7/site-packages/click/core.py", line 717, in main
+    rv = self.invoke(ctx)
+  File "/usr/lib/python2.7/site-packages/click/core.py", line 1137, in invoke
+    return _process_result(sub_ctx.command.invoke(sub_ctx))
+  File "/usr/lib/python2.7/site-packages/click/core.py", line 1137, in invoke
+    return _process_result(sub_ctx.command.invoke(sub_ctx))
+  File "/usr/lib/python2.7/site-packages/click/core.py", line 956, in invoke
+    return ctx.invoke(self.callback, **ctx.params)
+  File "/usr/lib/python2.7/site-packages/click/core.py", line 555, in invoke
+    return callback(*args, **kwargs)
+  File "/usr/lib/python2.7/site-packages/click/decorators.py", line 17, in new_func
+    return f(get_current_context(), *args, **kwargs)
+  File "/usr/lib/python2.7/site-packages/flask/cli.py", line 411, in decorator
+    with __ctx.ensure_object(ScriptInfo).load_app().app_context():
+  File "/usr/lib/python2.7/site-packages/flask/cli.py", line 377, in load_app
+    raise_if_not_found=False)
+  File "/usr/lib/python2.7/site-packages/flask/cli.py", line 235, in locate_app
+    __import__(module_name)
+  File "/root/fundweb/app/__init__.py", line 15, in <module>
+    from config import app_config
+  File "/root/fundweb/config.py", line 7
+SyntaxError: Non-ASCII character '\xe4' in file /root/fundweb/config.py on line 7, but no encoding declared; see http://www.python.org/peps/pep-0263.html for details
+Traceback (most recent call last):
+  File "/usr/bin/flask", line 8, in <module>
+    sys.exit(main())
+  File "/usr/lib/python2.7/site-packages/flask/cli.py", line 894, in main
+    cli.main(args=args, prog_name=name)
+  File "/usr/lib/python2.7/site-packages/flask/cli.py", line 557, in main
+    return super(FlaskGroup, self).main(*args, **kwargs)
+  File "/usr/lib/python2.7/site-packages/click/core.py", line 717, in main
+    rv = self.invoke(ctx)
+  File "/usr/lib/python2.7/site-packages/click/core.py", line 1137, in invoke
+    return _process_result(sub_ctx.command.invoke(sub_ctx))
+  File "/usr/lib/python2.7/site-packages/click/core.py", line 1137, in invoke
+    return _process_result(sub_ctx.command.invoke(sub_ctx))
+  File "/usr/lib/python2.7/site-packages/click/core.py", line 956, in invoke
+    return ctx.invoke(self.callback, **ctx.params)
+  File "/usr/lib/python2.7/site-packages/click/core.py", line 555, in invoke
+    return callback(*args, **kwargs)
+  File "/usr/lib/python2.7/site-packages/click/decorators.py", line 17, in new_func
+    return f(get_current_context(), *args, **kwargs)
+  File "/usr/lib/python2.7/site-packages/flask/cli.py", line 411, in decorator
+    with __ctx.ensure_object(ScriptInfo).load_app().app_context():
+  File "/usr/lib/python2.7/site-packages/flask/cli.py", line 377, in load_app
+    raise_if_not_found=False)
+  File "/usr/lib/python2.7/site-packages/flask/cli.py", line 235, in locate_app
+    __import__(module_name)
+  File "/root/fundweb/app/__init__.py", line 15, in <module>
+    from config import app_config
+  File "/root/fundweb/config.py", line 7
+SyntaxError: Non-ASCII character '\xe4' in file /root/fundweb/config.py on line 7, but no encoding declared; see http://www.python.org/peps/pep-0263.html for details
+Traceback (most recent call last):
+  File "run.py", line 4, in <module>
+    from app import create_app
+  File "/root/fundweb/app/__init__.py", line 15, in <module>
+    from config import app_config
+  File "/root/fundweb/config.py", line 7
+SyntaxError: Non-ASCII character '\xe4' in file /root/fundweb/config.py on line 7, but no encoding declared; see http://www.python.org/peps/pep-0263.html for details

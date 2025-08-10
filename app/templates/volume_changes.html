@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Volume Changes</title>
+</head>
+<body>
+    <h1>份额变化（volume-changes）</h1>
+    <button onclick="window.location.href='/'">返回首页</button>
+    <pre id="result" style="margin-top:20px; background:#f4f4f4; padding:10px;"></pre>
+    <script>
+        // The volume-changes API now supports a custno parameter
+        fetch('/api/funds/volume-changes?custno=custno1')
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('result').textContent = JSON.stringify(data, null, 2);
+            })
+            .catch(error => {
+                document.getElementById('result').textContent = 'Error: ' + error;
+            });
+    </script>
+</body>
+</html>

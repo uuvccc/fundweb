@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Compare</title>
+</head>
+<body>
+    <h1>区间比较（compare）</h1>
+    <button onclick="window.location.href='/'">返回首页</button>
+    <input type="text" id="datef" placeholder="开始日期 (YYYYMMDD)">
+    <input type="text" id="datet" placeholder="结束日期 (YYYYMMDD)">
+    <button onclick="fetchCompare()">比较</button>
+    <pre id="result" style="margin-top:20px; background:#f4f4f4; padding:10px;"></pre>
+    <script>
+        function fetchCompare() {
+            const datef = document.getElementById('datef').value;
+            const datet = document.getElementById('datet').value;
+            fetch(`/api/funds/compare?datef=${encodeURIComponent(datef)}&datet=${encodeURIComponent(datet)}`)
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('result').textContent = JSON.stringify(data, null, 2);
+                })
+                .catch(error => {
+                    document.getElementById('result').textContent = 'Error: ' + error;
+                });
+        }
+    </script>
+</body>
+</html> 

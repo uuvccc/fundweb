@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Refresh</title>
+</head>
+<body>
+    <h1>手动获取今日数据（refresh）</h1>
+    <button onclick="window.location.href='/'">返回首页</button>
+    <div id="latestDates" style="margin:10px 0; color:#333;"></div>
+    <label for="custno">选择客户号（custno）：</label>
+    <select id="custno">
+        <option value="">全部</option>
+        <option value="custno1">Customer 1</option>
+        <option value="custno2">Customer 2</option>
+    </select>
+    <button id="refreshBtn" onclick="fetchRefresh()">手动获取今日数据</button>
+    <pre id="result" style="margin-top:20px; background:#f4f4f4; padding:10px;"></pre>
+    <script>
+        function loadLatestDates() {
+            fetch('/api/funds/refresh', {method: 'GET'})
+                .then(response => response.json())
+                .then(data => {
+                    let html = '<b>各custno最新数据日期：</b><br>';
+                    for (const [custno, date] of Object.entries(data.latest_dates)) {
+                        html += `custno: ${custno} 最新日期: ${date || '无数据'}<br>`;
+                    }
+                    document.getElementById('latestDates').innerHTML = html;
+                });
+        }
+        function fetchRefresh() {
+            const btn = document.getElementById('refreshBtn');
+            btn.disabled = true;
+            document.getElementById('result').textContent = '正在获取今日数据，请稍候...';
+            const custno = document.getElementById('custno').value;
+            const formData = new FormData();
+            if (custno) formData.append('custno', custno);
+            fetch('/api/funds/refresh', {method: 'POST', body: formData})
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('result').textContent = JSON.stringify(data, null, 2);
+                    loadLatestDates();
+                })
+                .catch(error => {
+                    document.getElementById('result').textContent = 'Error: ' + error;
+                })
+                .finally(() => {
+                    btn.disabled = false;
+                });
+        }
+        window.onload = loadLatestDates;
+    </script>
+</body>
+</html>
