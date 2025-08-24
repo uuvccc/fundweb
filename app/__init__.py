@@ -69,11 +69,11 @@ def create_app(config_name):
     # app.config.from_object(Config())
     db.init_app(app)
 
-    scheduler = APScheduler()                  # 实例化 APScheduler
+    scheduler = APScheduler()                  # Instantiate APScheduler
     # it is also possible to enable the API directly
     scheduler.api_enabled = True
-    scheduler.init_app(app)                    # 把任务列表放入 flask
-    scheduler.start()                          # 启动任务列表
+    scheduler.init_app(app)                    # Put the job list into flask
+    scheduler.start()                          # Start the job list
 
     # --- flask-login setup ---
     login_manager = LoginManager()
@@ -87,22 +87,22 @@ def create_app(config_name):
 
     # app.run()
 
-    # 初始化数据库
+    # Initialize database
     with app.app_context():
         try:
-            # 创建所有数据库表
+            # Create all database tables
             db.create_all()
-            print("✅ 数据库表创建成功")
+            print("✅ Database tables created successfully")
         except Exception as e:
-            print(f"⚠️  数据库初始化警告: {e}")
+            print(f"⚠️  Database initialization warning: {e}")
 
-    # 主页
+    # Home page
     @app.route('/')
     @login_required
     def home():
         return render_template('index.html')
 
-    # 健康检查
+    # Health check
     @app.route('/health')
     def health_check():
         return jsonify({
@@ -111,27 +111,27 @@ def create_app(config_name):
             'service': 'fund-monitoring-system'
         })
 
-    # 获取今日基金变化（文本格式）
+    # Get today's fund changes (text format)
     @app.route('/api/funds/today-changes', methods=['GET', 'POST'])
     @login_required
     def get_today_fund_changes():
         from app.models import JsonString
         custno = request.args.get("custno")
         if not custno:
-            return "缺少 custno 参数", 400
+            return "Missing custno parameter", 400
         # Find the latest record
         peter1 = JsonString.query.filter_by(custno=custno).order_by(JsonString.date.desc(), JsonString.id.desc()).first()
         if not peter1:
-            return "该 custno 暂无数据", 404
+            return "No data for this custno", 404
         # Find the previous record with a different date
         lastpeter1 = JsonString.query.filter(JsonString.custno==custno, JsonString.date < peter1.date).order_by(JsonString.date.desc(), JsonString.id.desc()).first()
         if not lastpeter1:
-            return f"无有效对比数据：找不到 {peter1.date} 之前的数据"
+            return f"No valid comparison data: could not find data before {peter1.date}"
         try:
             jsonObject = json.loads(peter1.jsonString)
             lastJsonObject = json.loads(lastpeter1.jsonString)
         except json.JSONDecodeError:
-            return "基金数据格式错误", 500
+            return "Fund data format error", 500
         navInfo = {}
         for item in jsonObject[0]:
             navInfo[item["fundcode"]] = float(item["nav"])
@@ -151,15 +151,15 @@ def create_app(config_name):
         for k, v in volInfo.items():
             newVolInfo[k] = volInfo[k] - lastVolInfo.get(k, 0)
         # Show both dates in the result
-        result_string = f'基金份额变化 (custno={custno})\n日期对比: {peter1.date} vs {lastpeter1.date}\n'
+        result_string = f'Fund share changes (custno={custno})\nDate comparison: {peter1.date} vs {lastpeter1.date}\n'
         for k, v in newVolInfo.items():
             if v != 0.0:
-                result_string = result_string + f"{k}: 份额变化 {v}, 金额变化 {v * navInfo[k]}\n"
-        if result_string == f'基金份额变化 (custno={custno})\n日期对比: {peter1.date} vs {lastpeter1.date}\n':
-            result_string += "今日无基金变化"
+                result_string = result_string + f"{k}: Share change {v}, Amount change {v * navInfo[k]}\n"
+        if result_string == f'Fund share changes (custno={custno})\nDate comparison: {peter1.date} vs {lastpeter1.date}\n':
+            result_string += "No fund changes today"
         return result_string
 
-    # 获取基金净值变化（处理后，JSON格式）
+    # Get fund net asset value changes (processed, JSON format)
     @app.route('/api/funds/nav-changes', methods=['GET', 'POST'])
     @login_required
     def get_fund_nav_changes():
@@ -179,35 +179,35 @@ def create_app(config_name):
             # Find the latest record for this custno
             peter1 = JsonString.query.filter_by(custno=actual_custno).order_by(JsonString.date.desc(), JsonString.id.desc()).first()
             if not peter1:
-                return jsonify({"error": f"客户 {custno} 暂无数据"}), 404
+                return jsonify({"error": f"Customer {custno} has no data"}), 404
             
             # Find the previous record with a different date for this custno
             lastpeter1 = JsonString.query.filter(JsonString.custno==actual_custno, JsonString.date < peter1.date).order_by(JsonString.date.desc(), JsonString.id.desc()).first()
             if not lastpeter1:
-                return jsonify({"error": f"客户 {custno} 无有效对比数据：找不到 {peter1.date} 之前的数据"}), 404
+                return jsonify({"error": f"Customer {custno} has no valid comparison data: could not find data before {peter1.date}"}), 404
         else:
-            # 检查是否有数据
+            # Check if there is data
             max_id = db.session.query(func.max(JsonString.id)).scalar()
             if not max_id:
-                return jsonify({"error": "暂无基金数据，请先运行数据获取任务"}), 404
+                return jsonify({"error": "No fund data available, please run the data fetching task first"}), 404
 
             peter1 = JsonString.query.filter_by(id=max_id).first()
             if not peter1:
-                return jsonify({"error": "无法获取最新基金数据"}), 404
+                return jsonify({"error": "Unable to get latest fund data"}), 404
 
-            # 检查是否有前一天的数据
+            # Check if there is previous day's data
             if max_id <= 1:
-                return jsonify({"error": "暂无足够的历史数据进行比较"}), 404
+                return jsonify({"error": "Not enough historical data for comparison"}), 404
 
             lastpeter1 = JsonString.query.filter_by(id=max_id - 1).first()
             if not lastpeter1:
-                return jsonify({"error": "无法获取历史基金数据"}), 404
+                return jsonify({"error": "Unable to get historical fund data"}), 404
 
         try:
             jsonObject = json.loads(peter1.jsonString)
             lastJsonObject = json.loads(lastpeter1.jsonString)
         except json.JSONDecodeError:
-            return jsonify({"error": "基金数据格式错误"}), 500
+            return jsonify({"error": "Fund data format error"}), 500
 
         navInfo = {}
         for item in jsonObject[0]:
@@ -241,7 +241,7 @@ def create_app(config_name):
 
         returnVolInfo = {}
         for k, v in newVolInfo.items():
-            if v != 0.0:  # 只包含份额变化不为0的基金
+            if v != 0.0:  # Only include funds with non-zero share changes
                 returnVolInfo[k] = v * navInfo[k]
 
         returnVolInfo["description"] = "processed"
@@ -251,7 +251,7 @@ def create_app(config_name):
 
         return jsonify(returnVolInfo)
 
-    # 获取基金净值变化（未处理，JSON格式）
+    # Get fund net asset value changes (unprocessed, JSON format)
     @app.route('/api/funds/volume-changes', methods=['GET', 'POST'])
     @login_required
     def get_fund_volume_changes():
@@ -264,10 +264,10 @@ def create_app(config_name):
         lastday = (datetime.now(tz) + timedelta(days=-1)).strftime('%Y%m%d')
         print("date: " + nowdate + " " + lastday)
 
-        # 初始化 max_id
+        # Initialize max_id
         max_id = db.session.query(func.max(JsonString.id)).scalar()
         if not max_id:
-            return jsonify({"error": "暂无基金数据，请先运行数据获取任务"}), 404
+            return jsonify({"error": "No fund data available, please run the data fetching task first"}), 404
 
         # Query data for specific custno if provided, otherwise get any latest data
         if custno:
@@ -276,24 +276,24 @@ def create_app(config_name):
             # Find the latest record for this custno
             peter1 = JsonString.query.filter_by(custno=actual_custno).order_by(JsonString.date.desc(), JsonString.id.desc()).first()
             if not peter1:
-                return jsonify({"error": f"客户 {custno} 暂无数据"}), 404
+                return jsonify({"error": f"Customer {custno} has no data"}), 404
             
             # Find the previous record with a different date for this custno
             lastpeter1 = JsonString.query.filter(JsonString.custno==actual_custno, JsonString.date < peter1.date).order_by(JsonString.date.desc(), JsonString.id.desc()).first()
             if not lastpeter1:
-                return jsonify({"error": f"客户 {custno} 无有效对比数据：找不到 {peter1.date} 之前的数据"}), 404
+                return jsonify({"error": f"Customer {custno} has no valid comparison data: could not find data before {peter1.date}"}), 404
         else:
             peter1 = JsonString.query.filter_by(id=max_id).first()
             if not peter1:
-                return jsonify({"error": "无法获取最新基金数据"}), 404
+                return jsonify({"error": "Unable to get latest fund data"}), 404
 
-            # 检查是否有前一天的数据
+            # Check if there is previous day's data
             if max_id <= 1:
-                return jsonify({"error": "暂无足够的历史数据进行比较"}), 404
+                return jsonify({"error": "Not enough historical data for comparison"}), 404
 
             lastpeter1 = JsonString.query.filter_by(id=max_id - 1).first()
             if not lastpeter1:
-                return jsonify({"error": "无法获取历史基金数据"}), 404
+                return jsonify({"error": "Unable to get historical fund data"}), 404
 
         print("max id - 1  : " + str(max_id - 1))
 
@@ -301,7 +301,7 @@ def create_app(config_name):
             jsonObject = json.loads(peter1.jsonString)
             lastJsonObject = json.loads(lastpeter1.jsonString)
         except json.JSONDecodeError:
-            return jsonify({"error": "基金数据格式错误"}), 500
+            return jsonify({"error": "Fund data format error"}), 500
 
         print("peter id   : " + str(peter1.id) + " " + str(lastpeter1.id))
 
@@ -340,7 +340,7 @@ def create_app(config_name):
 
         filtered_vol_info = {}
         for k, v in newVolInfo.items():
-            if isinstance(v, (int, float)) and v != 0.0:  # 只包含份额变化不为0的基金
+            if isinstance(v, (int, float)) and v != 0.0:  # Only include funds with non-zero share changes
                 filtered_vol_info[k] = v
 
         filtered_vol_info["description"] = "no processed"
@@ -350,7 +350,7 @@ def create_app(config_name):
 
         return jsonify(filtered_vol_info)
 
-    # 获取指定日期的基金数据
+    # Get fund data for a specific date
     @app.route('/api/funds/by-date', methods=['GET', 'POST'])
     @login_required
     def get_funds_by_date():
@@ -358,11 +358,11 @@ def create_app(config_name):
 
         str_date = request.args.get("date")
         if not str_date:
-            return jsonify({"error": "日期参数不能为空"}), 400
+            return jsonify({"error": "Date parameter cannot be empty"}), 400
 
         peter1 = JsonString.query.filter_by(date = str_date).first()
         if not peter1:
-            return jsonify({"error": f"未找到日期 {str_date} 的数据"}), 404
+            return jsonify({"error": f"Data for date {str_date} not found"}), 404
 
         jsonObject = json.loads(peter1.jsonString)
 
@@ -382,7 +382,7 @@ def create_app(config_name):
 
         return jsonify(volInfo)
 
-    # 获取日期范围的基金数据对比
+    # Get fund data comparison for a date range
     @app.route('/api/funds/compare', methods=['GET', 'POST'])
     @login_required
     def compare_funds_by_date_range():
@@ -392,13 +392,13 @@ def create_app(config_name):
         str_datet = request.args.get("datet")
         
         if not str_datef or not str_datet:
-            return jsonify({"error": "开始日期和结束日期参数不能为空"}), 400
+            return jsonify({"error": "Start date and end date parameters cannot be empty"}), 400
 
         peter1 = JsonString.query.filter_by(date = str_datet).first()
         lastpeter1 = JsonString.query.filter_by(date = str_datef).first()
         
         if not peter1 or not lastpeter1:
-            return jsonify({"error": "未找到指定日期的数据"}), 404
+            return jsonify({"error": "Data for the specified dates not found"}), 404
 
         jsonObject = json.loads(peter1.jsonString)
         lastJsonObject = json.loads(lastpeter1.jsonString)
@@ -432,16 +432,16 @@ def create_app(config_name):
 
         amoutInfo = {}
         for k, v in newVolInfo.items():
-            if v != 0.0:  # 只包含份额变化不为0的基金
+            if v != 0.0:  # Only include funds with non-zero share changes
                 amoutInfo[k] = v * navInfo[k]
 
         amoutInfo["description"] = "arbitrarily / no processed amount : vol"
         amoutInfo["date"] = peter1.date
-        amoutInfo["amountInfo"] = {k: v for k, v in newVolInfo.items() if v != 0.0}  # 过滤amountInfo中的0值
+        amoutInfo["amountInfo"] = {k: v for k, v in newVolInfo.items() if v != 0.0}  # Filter 0 values in amountInfo
 
         return jsonify(amoutInfo)
 
-    # 手动触发数据获取
+    # Manually trigger data fetching
     @app.route('/api/funds/refresh', methods=['GET', 'POST'])
     @login_required
     def refresh_fund_data():
@@ -457,19 +457,19 @@ def create_app(config_name):
         custno = request.args.get('custno') or request.form.get('custno')
         if custno:
             fetch_and_store_fund_data_for_custnos([custno])
-            fetch_result = f"已获取 {custno} 的最新数据"
+            fetch_result = f"Got latest data for {custno}"
         else:
             # Get default custnos from environment variable
             default_custnos = os.environ.get('DEFAULT_CUSTNOS', 'custno1,custno2').split(',')
             fetch_and_store_fund_data_for_custnos(custnos_in_db if custnos_in_db else default_custnos)
-            fetch_result = "已获取全部 custno 的最新数据"
+            fetch_result = "Got latest data for all custno"
         return jsonify({
             "latest_dates": latest_dates,
             "fetch_result": fetch_result,
             "timestamp": datetime.now().isoformat()
         })
 
-    # 简化的刷新路由
+    # Simplified refresh route
     @app.route('/refresh', methods=['GET', 'POST'])
     @login_required
     def refresh_fund_data_simple():
@@ -529,7 +529,7 @@ def create_app(config_name):
     return app
 
 # @aps.task('cron', id='job1', day='*', hour='14', minute='46', second='00')
-def fetch_and_store_fund_data(a, b):                          # 运行的定时任务的函数
+def fetch_and_store_fund_data(a, b):                          # Function to run the scheduled task
     from app.models import JsonString
     from app.models import Employee
     import os
