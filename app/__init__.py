@@ -119,12 +119,16 @@ def create_app(config_name):
         custno = request.args.get("custno")
         if not custno:
             return "Missing custno parameter", 400
+            
+        # Map frontend custno to actual custno
+        actual_custno = map_frontend_custno_to_actual([custno])[0]
+        
         # Find the latest record
-        peter1 = JsonString.query.filter_by(custno=custno).order_by(JsonString.date.desc(), JsonString.id.desc()).first()
+        peter1 = JsonString.query.filter_by(custno=actual_custno).order_by(JsonString.date.desc(), JsonString.id.desc()).first()
         if not peter1:
             return "No data for this custno", 404
         # Find the previous record with a different date
-        lastpeter1 = JsonString.query.filter(JsonString.custno==custno, JsonString.date < peter1.date).order_by(JsonString.date.desc(), JsonString.id.desc()).first()
+        lastpeter1 = JsonString.query.filter(JsonString.custno==actual_custno, JsonString.date < peter1.date).order_by(JsonString.date.desc(), JsonString.id.desc()).first()
         if not lastpeter1:
             return f"No valid comparison data: could not find data before {peter1.date}"
         try:
@@ -609,7 +613,27 @@ def fetch_and_store_fund_data_for_custnos(custnos):
         url = f"{api_url}?custno={custno}"
         r = requests.get(url)
         DOMTree = xml.dom.minidom.parseString(r.text.encode("raw_unicode_escape").decode("raw_unicode_escape").encode("utf8")).documentElement.getElementsByTagName("return")
-        data2 = json.loads(DOMTree[0].childNodes[0].data)
-        jsonString = JsonString(date=nowdate, navdate=data2[0][0]["navdate"], jsonString=DOMTree[0].childNodes[0].data, custno=custno)
-        db.session.add(jsonString)
-        db.session.commit()
+        
+        # Check if DOMTree has elements before accessing
+        if not DOMTree or len(DOMTree) == 0:
+            print(f"Warning: No data received for custno {custno}")
+            continue
+            
+        # Check if DOMTree[0] has child nodes
+        if not DOMTree[0].hasChildNodes():
+            print(f"Warning: No child nodes in response for custno {custno}")
+            continue
+            
+        try:
+            data2 = json.loads(DOMTree[0].childNodes[0].data)
+            # Check if data2 has the expected structure
+            if not data2 or len(data2) == 0 or len(data2[0]) == 0 or "navdate" not in data2[0][0]:
+                print(f"Warning: Unexpected data structure for custno {custno}")
+                continue
+                
+            jsonString = JsonString(date=nowdate, navdate=data2[0][0]["navdate"], jsonString=DOMTree[0].childNodes[0].data, custno=custno)
+            db.session.add(jsonString)
+            db.session.commit()
+        except (IndexError, KeyError, json.JSONDecodeError) as e:
+            print(f"Error processing data for custno {custno}: {str(e)}")
+            continue
